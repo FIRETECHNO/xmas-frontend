@@ -16,21 +16,23 @@ function addToCart(){
 </script>
 <template>
 <v-container>
-    <v-card variant="tonal" elevation="4" hover>
-        <v-container>
+    <v-card variant="tonal" elevation="4">
+        <v-container style="padding: 0;">
             <v-col>
                 <v-row rows="6">
-                    <v-img :src="product.images[0]">
-                    </v-img>
+                    <NuxtLink :to= "{name : 'products-productId', params : {productId : product._id}}" style="margin: 0px;">
+                        <img cover :src="product.images[0]" class="w-100 h-100">
+                        <img>    
+                    </NuxtLink>  
                 </v-row>
                 <v-row rows="2" class="justify-start">
-                    <v-card-title style="padding: 0;">
+                    <v-card-title>
                     {{ product.name }}
                     </v-card-title>
                 </v-row>
                 <v-row rows="4" class="justify-center">
-                    <v-card-actions>
-                        <v-btn variant="flat" @click="addToCart"><p style="font-size: 11px;">Добавить в корзину</p></v-btn>
+                    <v-card-actions class="w-auto justify-center">
+                        <v-btn class="w-auto" ripple variant="flat" @click="addToCart"><p style="font-size: 11px;">Добавить в корзину</p></v-btn>
                     </v-card-actions>
                 </v-row>
             </v-col>
@@ -38,3 +40,9 @@ function addToCart(){
     </v-card>
 </v-container>
 </template>
+
+<style scoped>
+    a{
+
+    }
+</style>
