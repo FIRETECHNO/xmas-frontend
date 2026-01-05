@@ -19,20 +19,32 @@ export default defineNuxtConfig({
       }
     }],
   ],
-    build: {
+  build: {
     transpile: ['vuetify'],
   },
-    vite: {
+  vite: {
     vue: {
       template: {
         transformAssetUrls,
       },
     },
   },
-  postcss: {
-  plugins: {
-    '@tailwindcss/postcss': {},
-    autoprefixer: {},
+  runtimeConfig: {
+    // ycAccessKeyId: process.env.YC_KEY_ID,
+    // ycSecretAccessKey: process.env.YC_SECRET,
+    // ycBucket: process.env.YC_BUCKET,
+    // zoomToken: process.env.ZOOM_TOKEN,
+    // dadataToken: process.env.DADATA_TOKEN,
+    public: {
+      // adminEmails: process.env.NUXT_PUBLIC_ADMIN_EMAILS,
+      apiBase: process.env.NUXT_PUBLIC_API_BASE,
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
+    },
   },
-},
+  postcss: {
+    plugins: {
+      '@tailwindcss/postcss': {},
+      autoprefixer: {},
+    },
+  },
 })
