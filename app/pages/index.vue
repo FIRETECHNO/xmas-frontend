@@ -1,13 +1,10 @@
 <script setup lang="ts">
-import { useProductMainPage } from '~/composables/useProductMainPage';
+  
+let productMainPageStore = useProductMainPage();
 
+let products = productMainPageStore.products;
 
-let productMainPage = useProductMainPage();
-
-let products = productMainPage.products;
-
-
-
+await productMainPageStore.getAllProducts()
 </script>
 <template>
   <v-container>
