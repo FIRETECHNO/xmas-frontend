@@ -9,7 +9,7 @@ let passwordIsVisible = ref(false);
 let loading = ref(false);
 
 const schema = yup.object({
-    email : yup.string().required().email(),
+    email : yup.string().email().required(),
     password : yup.string().min(8).required(),
 })
 
