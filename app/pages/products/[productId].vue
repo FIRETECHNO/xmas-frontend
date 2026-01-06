@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 
 const productId = useRoute().params.productId?.toString();
 
@@ -6,8 +6,6 @@ let productStoreMainPage = useProductMainPage();
 
 productStoreMainPage.getProduct(productId!);
 let product = productStoreMainPage.currentProduct;
-
-
 
 let focusImage = ref(product.value?.images[0]);
 
@@ -26,8 +24,8 @@ await productStoreMainPage.getAllProducts();
                     </li>
                 </ul>
             </v-col>
-            <v-col cols="8" md="8" lg="6" class="border-md rounded-lg pa-0 mt-3">
-                <v-img cover class="h-100 w-100 rounded-lg" :src="focusImage" alt="" ></v-img>
+            <v-col cols="8" md="8" lg="6" class="rounded-lg pa-0 mt-3">
+                <v-img cover class="d-flex flex-column justify-center align-start border-md h-75 w-100 rounded-lg" :src="focusImage" alt="" ></v-img>
             </v-col>
         </v-row>
     </v-container>
