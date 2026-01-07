@@ -10,8 +10,8 @@ let passwordIsVisible = ref(false);
 let loading = ref(false);
 
 const schema = yup.object({
-    firstName : yup.string().min(2).required(),
-    lastName : yup.string().min(3).required(),
+    name : yup.string().min(2).required(),
+    surname : yup.string().min(3).required(),
     email : yup.string().email().required(),
     password : yup.string().min(8).required(),
 });
@@ -20,8 +20,8 @@ let {meta, handleSubmit} = useForm({
     validationSchema : schema,
 });
 
-const firstName = useField("firstName");
-const lastName = useField("lastName");
+const name = useField("name");
+const surname = useField("surname");
 const email = useField("email");
 const password = useField("password");
 
@@ -29,12 +29,15 @@ const onSubmitRegistration = handleSubmit(async values =>{
     loading.value = true;
     try{
         let res = await auth.registration({
-            ...values,
+            name: values.name,
+            surname: values.surname,
+            email: values.email,
+            password: values.password,
             roles : ["user"],
         });
 
         if (res){
-            router.push("/me");
+            router.push("/cabinet/me");
         }
     }catch (error){
         console.log("error registration : ", error);
@@ -49,11 +52,11 @@ const onSubmitRegistration = handleSubmit(async values =>{
             <v-card class="d-flex flex-column justify-center align-center text-center pa-6 pt-4 rounded-lg">
                 <div class="font-weight-bold text-h6">Регистрация</div>
                 <v-form @submit.prevent="onSubmitRegistration" class="d-flex flex-column w-100 mt-2">
-                    <v-text-field label="Имя" type="firstName" placeholder="Иван" v-model="firstName.value.value"
-                    :error-messages="firstName.errorMessage.value" variant="underlined" class="w-100">
+                    <v-text-field label="Имя" type="text" placeholder="Иван" v-model="name.value.value"
+                    :error-messages="name.errorMessage.value" variant="underlined" class="w-100">
                     </v-text-field>
-                    <v-text-field label="Фамилия" type="lastName" placeholder="Иванов" v-model="lastName.value.value"
-                    :error-messages="lastName.errorMessage.value" variant="underlined" class="w-100">
+                    <v-text-field label="Фамилия" type="text" placeholder="Иванов" v-model="surname.value.value"
+                    :error-messages="surname.errorMessage.value" variant="underlined" class="w-100">
                     </v-text-field>
                     <v-text-field label="Электронная почта" type="email" placeholder="ivanivanov@ya.ru" v-model="email.value.value"
                     :error-messages="email.errorMessage.value" variant="underlined" class="w-100">

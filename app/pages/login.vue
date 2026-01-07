@@ -28,7 +28,7 @@ const onSubmitLogin = handleSubmit(async values => {
     loading.value = false;
 
     if(res?.status?.value == "success"){
-        router.push("/me");
+        router.push("/cabinet/me");
     }
 })
 
@@ -51,7 +51,7 @@ const onSubmitLogin = handleSubmit(async values => {
                     variant="underlined">
                     </v-text-field>
 
-                    <v-btn class="mt-4" type="submit" :disabled="!meta.valid" color="accent">
+                    <v-btn class="mt-4" type="submit" :disabled="!meta.valid || loading" color="accent" :loading="loading">
                         Войти
                     </v-btn>
                 </v-form>
