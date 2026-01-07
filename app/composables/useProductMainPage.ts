@@ -1,13 +1,16 @@
 import type {IProductDb} from "~/types/IProduct.interface";
 export function useProductMainPage(){
-    let products = useState<IProductDb[]>(() => []);
 
-    // Затычки для примера
-    products.value = [{
+    let products = useState<IProductDb[]>(() => []);
+    let currentProduct = useState<IProductDb | undefined>();
+    
+    async function getAllProducts() : Promise<void>{
+        // Временная затычка до появления эндпоинта на получение всех продуктов из БД
+        products.value = [{
         _id : "1233434",
         name : "Cross",
         category : "Shoes",
-        images : ["https://stockmann.ru/pi/pp/783/5399783/5399783-04.jpg@jpg"],
+        images : ["https://stockmann.ru/pi/pp/783/5399783/5399783-04.jpg@jpg", "https://ir.ozone.ru/s3/multimedia-o/c1000/6699087852.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_NaG4eiwNBEhJ2mmzc5mWNcpvgKqv8Q0SsQ&s","https://stockmann.ru/pi/pp/783/5399783/5399783-04.jpg@jpg"],
         variants : [
             {model: "Cool", color: "red", size : "48"}
         ] 
@@ -106,5 +109,16 @@ export function useProductMainPage(){
             {model: "Cool", color: "red", size : "48"}
         ] 
     }]
-    return { products }
+    }
+    async function getProduct(_id : string) : Promise<void>{
+        for(let i = 0; i < products.value.length; i++){
+            if (products.value[i]?._id == _id){
+                currentProduct.value = products.value[i]
+            }
+        }
+    }
+    return {
+        products, currentProduct,
+        getAllProducts, getProduct 
+    }
 }
