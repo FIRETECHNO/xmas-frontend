@@ -28,7 +28,12 @@ const onSubmitLogin = handleSubmit(async values => {
     loading.value = false;
 
     if(res?.status?.value == "success"){
-        router.push("/cabinet/me");
+        const user = auth.user;
+        if(user?.roles?.includes('admin')){
+            router.push("/admin");
+        } else {
+            router.push("/cabinet/me");
+        }
     }
 })
 
