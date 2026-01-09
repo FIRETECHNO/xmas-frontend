@@ -20,13 +20,6 @@ let {user} = auth
           <div class="text-subtitle-2 text-grey">Email</div>
           <div class="text-body-1">{{ user?.email }}</div>
         </div>
-        
-        <!-- Additional user info blocks can be added here -->
-        <!-- Example: Phone number block -->
-        <!-- <div class="mb-4">
-          <div class="text-subtitle-2 text-grey">Телефон</div>
-          <div class="text-body-1">{{ user?.phone || 'Не указан' }}</div>
-        </div> -->
       </v-card-text>
       <v-card-actions class="d-flex justify-space-between mt-2">
         <v-btn 
