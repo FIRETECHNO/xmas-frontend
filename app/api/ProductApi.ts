@@ -19,7 +19,7 @@ export default {
             body: { _id: productId, updates: data }
         })
     },
-    async getAll(): Promise<IProductDb[]> {
+    async getAll(): Promise<{products: IProductDb[]}> {
         return useNuxtApp().$apiFetch('/product/get-all',{
             method: 'POST',
         })
