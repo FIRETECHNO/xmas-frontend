@@ -8,9 +8,7 @@ export function useProductMainPage(){
     async function getAllProducts() : Promise<void>{
         try{
             const res = await ProductApi.getAll()
-            if (res.length != 0){
-                products.value = res;
-            }
+            products.value = res.products || [];
         }
         catch(error){
             console.log("useProductMainPage/getAllProducts", error);
