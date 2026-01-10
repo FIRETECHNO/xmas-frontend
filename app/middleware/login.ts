@@ -6,7 +6,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
     if (authStore.user?.roles.indexOf('admin') != -1) {
       return navigateTo('/admin')
     }
-    if (authStore.user?.roles.indexOf('user') != -1) {
+    if (authStore.user?.roles.indexOf('customer') != -1) {
       return navigateTo('/cabinet/me')
     }
   }

@@ -6,7 +6,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
   }
 
   if (isCustomer.value) {
-    return setPageLayout("user")
+    return setPageLayout("customer")
   }
 
   return setPageLayout("default")

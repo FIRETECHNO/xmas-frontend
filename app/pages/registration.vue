@@ -33,7 +33,7 @@ const onSubmitRegistration = handleSubmit(async values =>{
             surname: values.surname,
             email: values.email,
             password: values.password,
-            roles : ["user"],
+            roles : ["customer"],
         });
 
         if (res){
