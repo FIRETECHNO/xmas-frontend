@@ -39,9 +39,21 @@ async function logOut() {
               <v-icon>mdi-cart</v-icon>
             </button>
           </div>
-          <div class="ml-4">
-            {{ user.name }} {{ user.surname }}
-          </div>
+          <v-menu location="bottom">
+            <template #activator="{ props }">
+              <v-btn v-bind="props" class="ml-4">
+                <div>{{ user?.name }} {{ user?.surname }}</div>
+              </v-btn>
+            </template>
+            <v-card min-width="200">
+              <v-list>
+                <v-list-item @click="router.push('/cabinet/me')" prepend-icon="mdi-account-edit" title="Личный кабинет" />
+                <v-list-item @click="router.push('/cabinet/cart')" prepend-icon="mdi-cart" title="Корзина" />
+                <v-divider class="my-2"></v-divider>
+                <v-list-item @click="logOut" prepend-icon="mdi-logout" title="Выйти" />
+              </v-list>
+            </v-card>
+          </v-menu>
         </div>
       </v-container>
     </v-app-bar>

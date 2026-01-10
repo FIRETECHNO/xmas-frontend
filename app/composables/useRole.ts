@@ -15,8 +15,7 @@ export const useRole = () => {
   });
 
   const isCustomer = computed(() => {
-    if (!authStore.user?.roles.includes('customer')) return false;
-    return true;
+    return !!authStore.user?.roles.includes('customer')
   })
   
   return {
