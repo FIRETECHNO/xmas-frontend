@@ -37,7 +37,7 @@ const onSubmitCreateProduct = handleSubmit(async values => {
   const res = await productAdminStore.createProduct(
     values.name,
     values.category,
-    values.images,
+    [values.images],
     values.model,
     values.color,
     values.size
@@ -68,7 +68,7 @@ const onSubmitCreateProduct = handleSubmit(async values => {
           <v-text-field label="Ссылка на изображения" type="text" placeholder="https://api-getImages.ru/id-product" v-model="images.value.value"
           :error-messages="images.errorMessage.value" variant="underlined" class="w-100">
           </v-text-field>
-          <div class="font-weight-bold text-h6"> Добавить базовую модель</div>
+          <div class="font-weight-bold text-h6"> Добавить базовый вариант</div>
           <v-text-field label="Модель" type="text" placeholder="Модель1" v-model="model.value.value"
           :error-messages="model.errorMessage.value" variant="underlined" class="w-100">
           </v-text-field>
