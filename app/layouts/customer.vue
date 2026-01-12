@@ -2,13 +2,13 @@
 
 const router = useRouter();
 const userStore = useAuth();
+const cart = useCart();
 
 let dialog = ref(false);
 let { user } = useAuth();
 
+let itemsCount = cart.countItem();
 // заглушка
-const itemsCount = 10;
-
 
 async function logOut() {
   dialog.value = false;
